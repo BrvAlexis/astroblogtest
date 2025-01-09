@@ -1,5 +1,14 @@
 ---
-const formFields = [
+type InputType = "text" | "email" | "tel";
+
+const formFields: {
+  id: string;
+  label: string;
+  type: InputType;
+  required: boolean;
+  pattern: string | null;
+  error?: string;
+}[] = [
   {
     id: "name",
     label: "Nom",
