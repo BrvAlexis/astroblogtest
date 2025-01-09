@@ -18,7 +18,7 @@ const { title, description } = Astro.props;
     <BaseHead title={title} description={description} />
     <MaterialDesignLite />
   </head>
-  <body class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <body class="demo-layout-transparent mdl-layout mdl-js-layout">
     <Header />
     <div class="mdl-layout__content">
       <div class="page-container">
@@ -32,6 +32,20 @@ const { title, description } = Astro.props;
 </html>
 
 <style is:global>
+  .demo-layout-transparent {
+    background: url("/hero-pattern.svg") center / cover;
+  }
+
+  .demo-layout-transparent .mdl-layout__header,
+  .demo-layout-transparent .mdl-layout__drawer-button {
+    color: white;
+  }
+
+  .mdl-layout__header--transparent {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: none;
+  }
+
   :root {
     --primary-color: #3f51b5;
     --accent-color: #ff4081;
@@ -116,16 +130,23 @@ const { title, description } = Astro.props;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%;
   }
 
   .main-content {
     flex: 1 0 auto;
+    width: 100%;
   }
 
   .mdl-layout__content {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    overflow-x: hidden;
+    width: 100%;
+  }
+
+  footer {
+    flex-shrink: 0;
+    width: 100%;
   }
 </style>

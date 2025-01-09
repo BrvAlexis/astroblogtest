@@ -84,11 +84,13 @@ const { title, faqs } = Astro.props;
   // Animation de l'icône lors du clic
   document.querySelectorAll(".mdl-card__title").forEach((title) => {
     title.addEventListener("click", () => {
-      const icon = title.querySelector(".material-icons");
-      icon.style.transform =
-        icon.style.transform === "rotate(180deg)"
-          ? "rotate(0deg)"
-          : "rotate(180deg)";
+      const icon = title.querySelector(".material-icons") as HTMLElement;
+      if (icon) {
+        icon.style.transform =
+          icon.style.transform === "rotate(180deg)"
+            ? "rotate(0deg)"
+            : "rotate(180deg)";
+      }
     });
   });
 </script>

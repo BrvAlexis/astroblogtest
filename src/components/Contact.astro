@@ -1,0 +1,130 @@
+---
+const formFields = [
+  {
+    id: "name",
+    label: "Nom",
+    type: "text",
+    required: true,
+    pattern: "[A-Za-zÀ-ÿ\\s]{2,50}",
+    error: "Le nom doit contenir entre 2 et 50 caractères alphabétiques",
+  },
+  {
+    id: "email",
+    label: "Email",
+    type: "email",
+    required: true,
+    pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+    error: "Veuillez entrer une adresse email valide",
+  },
+  {
+    id: "phone",
+    label: "Téléphone",
+    type: "tel",
+    required: true,
+    pattern: "^(?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4}$",
+    error: "Format attendu : +33 6 12 34 56 78 ou 06 12 34 56 78",
+  },
+  {
+    id: "subject",
+    label: "Sujet",
+    type: "text",
+    required: true,
+    pattern: ".{5,100}",
+    error: "Le sujet doit contenir entre 5 et 100 caractères",
+  },
+];
+---
+
+<div class="contact-container">
+  <div class="mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Contactez-nous</h2>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+      <form action="#" method="POST" id="contactForm">
+        {
+          formFields.map((field) => (
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input
+                class="mdl-textfield__input"
+                type={field.type}
+                id={field.id}
+                name={field.id}
+                pattern={field.pattern}
+                required={field.required}
+                minlength={field.type === "text" ? "2" : null}
+              />
+              <label class="mdl-textfield__label" for={field.id}>
+                {field.label}
+              </label>
+              <span class="mdl-textfield__error">{field.error}</span>
+            </div>
+          ))
+        }
+
+        <div
+          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+        >
+          <textarea
+            class="mdl-textfield__input"
+            rows="4"
+            id="message"
+            name="message"
+            required
+            minlength="10"
+            maxlength="1000"></textarea>
+          <label class="mdl-textfield__label" for="message"
+            >Message (10-1000 caractères)</label
+          >
+          <span class="mdl-textfield__error"
+            >Le message doit contenir entre 10 et 1000 caractères</span
+          >
+        </div>
+
+        <button
+          class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+          type="submit"
+        >
+          Envoyer
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("contactForm")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
+
+    // Validation supplémentaire côté client si nécessaire
+    console.log("Form data:", data);
+
+    // Ici, ajoutez votre logique d'envoi du formulaire
+    alert("Formulaire soumis avec succès!");
+  });
+</script>
+
+<style>
+  .contact-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .mdl-textfield {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .mdl-button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .mdl-textfield__error {
+    color: #d50000;
+  }
+</style>

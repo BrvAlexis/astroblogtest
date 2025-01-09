@@ -90,7 +90,7 @@ const { stats } = Astro.props;
 </style>
 
 <script>
-  function handleIntersection(entries) {
+  function handleIntersection(entries: IntersectionObserverEntry[]) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("animate");
