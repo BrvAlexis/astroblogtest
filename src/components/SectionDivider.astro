@@ -1,0 +1,27 @@
+---
+interface Props {
+  color?: string;
+}
+
+const { color = "#f5f5f5" } = Astro.props;
+---
+
+<div class="section-divider" style={`--divider-color: ${color}`}></div>
+
+<style>
+  .section-divider {
+    position: relative;
+    height: 100px;
+    width: 100%;
+    max-width: 100%;
+    background: linear-gradient(
+      to bottom right,
+      transparent 49.5%,
+      var(--divider-color) 50%
+    );
+    margin-top: -50px;
+    margin-bottom: -50px;
+    z-index: 1;
+    overflow: hidden;
+  }
+</style>

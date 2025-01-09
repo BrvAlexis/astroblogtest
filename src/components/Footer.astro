@@ -1,62 +1,273 @@
 ---
 const today = new Date();
+
+// Navigation Links
+const footerLinks = {
+  product: [
+    { text: "Fonctionnalités", href: "/features" },
+    { text: "Tarifs", href: "/pricing" },
+    { text: "FAQ", href: "/faq" },
+  ],
+  company: [
+    { text: "À propos", href: "/about" },
+    { text: "Blog", href: "/blog" },
+    { text: "Carrières", href: "/careers" },
+  ],
+  legal: [
+    { text: "Confidentialité", href: "/privacy" },
+    { text: "Conditions", href: "/terms" },
+    { text: "Cookies", href: "/cookies" },
+  ],
+};
+
+// Social Media Links
+const socialLinks = [
+  { icon: "facebook", href: "#", label: "Facebook" },
+  { icon: "twitter", href: "#", label: "Twitter" },
+  { icon: "linkedin", href: "#", label: "LinkedIn" },
+  { icon: "github", href: "#", label: "GitHub" },
+];
 ---
 
-<footer>
-	&copy; {today.getFullYear()} Your name here. All rights reserved.
-	<div class="social-links">
-		<a href="https://m.webtoo.ls/@astro" target="_blank">
-			<span class="sr-only">Follow Astro on Mastodon</span>
-			<svg
-				viewBox="0 0 16 16"
-				aria-hidden="true"
-				width="32"
-				height="32"
-				astro-icon="social/mastodon"
-				><path
-					fill="currentColor"
-					d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
-				></path></svg
-			>
-		</a>
-		<a href="https://twitter.com/astrodotbuild" target="_blank">
-			<span class="sr-only">Follow Astro on Twitter</span>
-			<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/twitter"
-				><path
-					fill="currentColor"
-					d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-				></path></svg
-			>
-		</a>
-		<a href="https://github.com/withastro/astro" target="_blank">
-			<span class="sr-only">Go to Astro's GitHub repo</span>
-			<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github"
-				><path
-					fill="currentColor"
-					d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-				></path></svg
-			>
-		</a>
-	</div>
+<footer class="mdl-mega-footer">
+  <div class="mdl-mega-footer__middle-section">
+    <!-- Logo et description -->
+    <div class="mdl-mega-footer__drop-down-section">
+      <h1 class="mdl-mega-footer__heading">Notre entreprise</h1>
+      <div class="footer-brand">
+        <img src="/logo.svg" alt="Logo" class="footer-logo" />
+        <p class="mdl-mega-footer__link-list description">
+          Créons ensemble des expériences web exceptionnelles avec Material
+          Design Lite et Astro.
+        </p>
+      </div>
+    </div>
+
+    <!-- Produit -->
+    <div class="mdl-mega-footer__drop-down-section">
+      <input
+        class="mdl-mega-footer__heading-checkbox"
+        type="checkbox"
+        checked
+      />
+      <h1 class="mdl-mega-footer__heading">Produit</h1>
+      <ul class="mdl-mega-footer__link-list">
+        {
+          footerLinks.product.map((link) => (
+            <li>
+              <a href={link.href}>{link.text}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Entreprise -->
+    <div class="mdl-mega-footer__drop-down-section">
+      <input
+        class="mdl-mega-footer__heading-checkbox"
+        type="checkbox"
+        checked
+      />
+      <h1 class="mdl-mega-footer__heading">Entreprise</h1>
+      <ul class="mdl-mega-footer__link-list">
+        {
+          footerLinks.company.map((link) => (
+            <li>
+              <a href={link.href}>{link.text}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Légal -->
+    <div class="mdl-mega-footer__drop-down-section">
+      <input
+        class="mdl-mega-footer__heading-checkbox"
+        type="checkbox"
+        checked
+      />
+      <h1 class="mdl-mega-footer__heading">Légal</h1>
+      <ul class="mdl-mega-footer__link-list">
+        {
+          footerLinks.legal.map((link) => (
+            <li>
+              <a href={link.href}>{link.text}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter-section">
+    <h3 class="mdl-mega-footer__heading">Restez informé</h3>
+    <form class="newsletter-form">
+      <div class="mdl-textfield mdl-js-textfield">
+        <input
+          class="mdl-textfield__input"
+          type="email"
+          id="newsletter-email"
+          placeholder="Votre email"
+        />
+      </div>
+      <button
+        class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"
+      >
+        S'abonner
+      </button>
+    </form>
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="mdl-mega-footer__bottom-section">
+    <div class="footer-bottom-content">
+      <div class="copyright">
+        &copy; {today.getFullYear()} Votre Entreprise. Tous droits réservés.
+      </div>
+      <div class="social-links">
+        {
+          socialLinks.map((social) => (
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener"
+              class="mdl-button mdl-js-button mdl-button--icon"
+              aria-label={social.label}
+            >
+              <i class="material-icons">{social.icon}</i>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </footer>
+
 <style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
+  .mdl-mega-footer {
+    background-color: #263238;
+    padding: 64px 40px 32px;
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+  }
+
+  .footer-brand {
+    max-width: 300px;
+  }
+
+  .footer-logo {
+    height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .newsletter-section {
+    padding: 48px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    margin: 32px 0;
+  }
+
+  .newsletter-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    max-width: 500px;
+    margin: 24px auto 0;
+  }
+
+  .mdl-textfield {
+    width: 100%;
+  }
+
+  .mdl-textfield__input {
+    color: white;
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .mdl-textfield__input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 8px;
+  }
+
+  .social-links .mdl-button {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .social-links .mdl-button:hover {
+    color: white;
+  }
+
+  @media (max-width: 840px) {
+    .mdl-mega-footer {
+      padding: 48px 24px 24px;
+      margin-top: auto;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+      padding: 0 24px;
+    }
+
+    .footer-bottom-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .mdl-mega-footer__middle-section {
+      flex-direction: column;
+    }
+
+    .mdl-mega-footer__drop-down-section {
+      width: 100%;
+      margin-bottom: 32px;
+    }
+  }
+
+  /* Animation au survol des liens */
+  .mdl-mega-footer__link-list a {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .mdl-mega-footer__link-list a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+
+  .mdl-mega-footer__link-list a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 </style>

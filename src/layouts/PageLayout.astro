@@ -1,0 +1,39 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  fullWidth?: boolean;
+}
+
+const { title, description, fullWidth = false } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class={`page-content ${fullWidth ? "full-width" : ""}`}>
+    <slot />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+  }
+
+  .full-width {
+    max-width: 100%;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  @media (max-width: 600px) {
+    .page-content:not(.full-width) {
+      padding: 1rem;
+    }
+  }
+</style>

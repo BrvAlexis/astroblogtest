@@ -1,0 +1,131 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import MaterialDesignLite from "../components/MaterialDesignLite.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <BaseHead title={title} description={description} />
+    <MaterialDesignLite />
+  </head>
+  <body class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <Header />
+    <div class="mdl-layout__content">
+      <div class="page-container">
+        <main class="main-content">
+          <slot />
+        </main>
+        <Footer />
+      </div>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --primary-color: #3f51b5;
+    --accent-color: #ff4081;
+    --text-color: rgba(0, 0, 0, 0.87);
+    --text-color-light: rgba(0, 0, 0, 0.54);
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body {
+    font-family: "Roboto", sans-serif;
+    min-height: 100vh;
+  }
+
+  .mdl-layout {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .mdl-layout__content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  section {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .mdl-typography--display-2,
+  .mdl-typography--display-3 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .mdl-card {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .mdl-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Règle globale pour box-sizing */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Règle pour les images responsives */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Conteneur MDL */
+  .mdl-layout__container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .main-content {
+    flex: 1 0 auto;
+  }
+
+  .mdl-layout__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+</style>

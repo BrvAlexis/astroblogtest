@@ -1,0 +1,108 @@
+---
+interface Stat {
+  icon: string;
+  value: string | number;
+  label: string;
+}
+
+interface Props {
+  stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section
+  class="stats-section mdl-color--primary mdl-color-text--primary-contrast"
+>
+  <div class="mdl-grid">
+    {
+      stats.map((stat) => (
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--3-col-desktop">
+          <div class="stat-card mdl-card">
+            <div class="stat-icon">
+              <i class="material-icons">{stat.icon}</i>
+            </div>
+            <div class="stat-value mdl-typography--display-2">{stat.value}</div>
+            <div class="stat-label mdl-typography--subhead">{stat.label}</div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .stats-section {
+    padding: 32px 16px;
+  }
+  @media (min-width: 840px) {
+    .stats-section {
+      padding: 64px 32px;
+    }
+  }
+  .stat-card {
+    text-align: center;
+    padding: 16px;
+    background: transparent;
+    box-shadow: none;
+    margin-bottom: 24px;
+  }
+  @media (min-width: 480px) {
+    .stat-card {
+      padding: 24px;
+      margin-bottom: 0;
+    }
+  }
+  .stat-icon .material-icons {
+    font-size: 36px;
+    opacity: 0.87;
+  }
+  @media (min-width: 840px) {
+    .stat-icon .material-icons {
+      font-size: 48px;
+    }
+  }
+  .stat-value {
+    font-size: 34px;
+    margin: 8px 0;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @media (min-width: 840px) {
+    .stat-value {
+      font-size: 45px;
+    }
+  }
+  .stat-value.animate {
+    animation: countUpAndFadeIn 1s ease-out forwards;
+  }
+  @keyframes countUpAndFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  function handleIntersection(entries) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate");
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.5,
+  });
+
+  document.querySelectorAll(".stat-value").forEach((stat) => {
+    observer.observe(stat);
+  });
+</script>

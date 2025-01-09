@@ -1,0 +1,93 @@
+---
+interface Testimonial {
+  name: string;
+  role: string;
+  content: string;
+  avatar?: string;
+}
+
+interface Props {
+  title: string;
+  testimonials: Testimonial[];
+}
+
+const { title, testimonials } = Astro.props;
+---
+
+<section class="testimonials-section">
+  <h2 class="mdl-typography--display-2">{title}</h2>
+  <div class="mdl-grid">
+    {
+      testimonials.map((testimonial) => (
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--4-col-desktop">
+          <div class="mdl-card mdl-shadow--2dp testimonial-card">
+            <div class="mdl-card__title">
+              <div class="avatar">
+                {testimonial.avatar ? (
+                  <img src={testimonial.avatar} alt={testimonial.name} />
+                ) : (
+                  <i class="material-icons">account_circle</i>
+                )}
+              </div>
+              <div class="author-info">
+                <h3 class="mdl-card__title-text">{testimonial.name}</h3>
+                <div class="mdl-card__subtitle-text">{testimonial.role}</div>
+              </div>
+            </div>
+            <div class="mdl-card__supporting-text">{testimonial.content}</div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    padding: 32px 16px;
+    background: #fafafa;
+    text-align: center;
+  }
+  @media (min-width: 840px) {
+    .testimonials-section {
+      padding: 64px 32px;
+    }
+  }
+  .mdl-typography--display-2 {
+    margin-bottom: 32px;
+    font-size: 34px;
+  }
+  @media (min-width: 840px) {
+    .mdl-typography--display-2 {
+      margin-bottom: 48px;
+      font-size: 45px;
+    }
+  }
+  .testimonial-card {
+    width: 100%;
+    min-height: 200px;
+    margin-bottom: 16px;
+  }
+  .mdl-card__title {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+  }
+  @media (min-width: 480px) {
+    .mdl-card__title {
+      padding: 24px;
+    }
+  }
+  .avatar {
+    width: 48px;
+    height: 48px;
+    margin-right: 12px;
+  }
+  @media (min-width: 480px) {
+    .avatar {
+      width: 56px;
+      height: 56px;
+      margin-right: 16px;
+    }
+  }
+</style>

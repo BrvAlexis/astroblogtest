@@ -1,0 +1,84 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  heroImage?: string;
+}
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="blog-post">
+    <div class="blog-header">
+      {heroImage && <img class="hero-image" src={heroImage} alt="" />}
+      <h1 class="mdl-typography--display-2">{title}</h1>
+      <div class="post-meta">
+        <FormattedDate date={pubDate} />
+        {
+          updatedDate && (
+            <div class="last-updated">
+              Dernière mise à jour le <FormattedDate date={updatedDate} />
+            </div>
+          )
+        }
+      </div>
+    </div>
+    <div class="blog-content mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__supporting-text">
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .blog-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+  }
+
+  .post-meta {
+    color: var(--text-color-light);
+    margin-top: 1rem;
+  }
+
+  .last-updated {
+    font-style: italic;
+    margin-top: 0.5rem;
+  }
+
+  .blog-content {
+    padding: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .blog-post {
+      padding: 1rem;
+    }
+
+    .blog-content {
+      padding: 1rem;
+    }
+  }
+</style>
+

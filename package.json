@@ -6,12 +6,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "setup-mdl": "node scripts/setup-mdl.js",
+    "prepare": "npm run setup-mdl"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.3",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
-    "astro": "^5.1.3"
+    "astro": "^5.1.3",
+    "material-design-lite": "^1.3.0"
   }
 }

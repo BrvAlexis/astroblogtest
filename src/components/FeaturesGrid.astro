@@ -1,0 +1,65 @@
+---
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  features: Feature[];
+}
+
+const { features } = Astro.props;
+---
+
+<section class="features-section">
+  <div class="mdl-grid">
+    {
+      features.map((feature) => (
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--4-col-desktop">
+          <div class="mdl-card mdl-shadow--2dp feature-card">
+            <div class="mdl-card__title">
+              <i class="material-icons">{feature.icon}</i>
+              <h2 class="mdl-card__title-text">{feature.title}</h2>
+            </div>
+            <div class="mdl-card__supporting-text">{feature.description}</div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .features-section {
+    padding: 32px 16px;
+  }
+  @media (min-width: 840px) {
+    .features-section {
+      padding: 48px 32px;
+    }
+  }
+  .feature-card {
+    width: 100%;
+    min-height: 200px;
+    margin-bottom: 16px;
+  }
+  .mdl-card__title {
+    align-items: center;
+    padding: 16px;
+  }
+  @media (min-width: 480px) {
+    .mdl-card__title {
+      padding: 24px;
+    }
+  }
+  .material-icons {
+    margin-right: 16px;
+    font-size: 24px;
+  }
+  @media (min-width: 480px) {
+    .material-icons {
+      font-size: 28px;
+    }
+  }
+</style>

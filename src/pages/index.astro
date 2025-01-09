@@ -1,50 +1,84 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import PageLayout from "../layouts/PageLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import FeaturesGrid from "../components/FeaturesGrid.astro";
+import CtaSection from "../components/CtaSection.astro";
+import TestimonialsSection from "../components/TestimonialsSection.astro";
+import StatsSection from "../components/StatsSection.astro";
+import FaqSection from "../components/FaqSection.astro";
+import SectionDivider from "../components/SectionDivider.astro";
+
+const features = [
+  {
+    icon: "speed",
+    title: "Performance",
+    description: "Site ultra rapide grâce à Astro",
+  },
+  {
+    icon: "brush",
+    title: "Design",
+    description: "Interface élégante avec Material Design",
+  },
+  {
+    icon: "devices",
+    title: "Responsive",
+    description: "S'adapte à tous les écrans",
+  },
+];
+
+const testimonials = [
+  {
+    name: "Marie Dupont",
+    role: "CEO, TechStart",
+    content: "Une expérience incroyable avec cette solution...",
+    avatar: "/avatars/marie.jpg",
+  },
+  // ... autres témoignages
+];
+
+const stats = [
+  {
+    icon: "people",
+    value: "10K+",
+    label: "Utilisateurs actifs",
+  },
+  // ... autres stats
+];
+
+const faqs = [
+  {
+    question: "Comment commencer ?",
+    answer: "C'est très simple, il suffit de...",
+  },
+  // ... autres FAQs
+];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<PageLayout
+  title="Accueil"
+  description="Ma super landing page"
+  fullWidth={true}
+>
+  <HeroSection
+    title="Bienvenue sur mon site"
+    subtitle="Une landing page moderne avec Material Design Lite"
+  />
+  <SectionDivider color="#ffffff" />
+  <FeaturesGrid features={features} />
+  <SectionDivider color="#3f51b5" />
+  <StatsSection stats={stats} />
+  <SectionDivider color="#f5f5f5" />
+  <TestimonialsSection
+    title="Ce que disent nos clients"
+    testimonials={testimonials}
+  />
+  <SectionDivider color="#ffffff" />
+  <CtaSection
+    title="Prêt à commencer ?"
+    description="Rejoignez-nous dès maintenant"
+    buttonText="S'inscrire"
+    buttonLink="/signup"
+  />
+  <SectionDivider color="#f5f5f5" />
+  <FaqSection title="Questions fréquentes" faqs={faqs} />
+</PageLayout>

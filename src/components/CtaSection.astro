@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonLink: string;
+}
+
+const { title, description, buttonText, buttonLink } = Astro.props;
+---
+
+<section
+  class="cta-section mdl-color--primary mdl-color-text--primary-contrast"
+>
+  <div class="cta-content">
+    <h2 class="mdl-typography--display-1">{title}</h2>
+    <p class="mdl-typography--body-1">{description}</p>
+    <button
+      class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"
+    >
+      {buttonText}
+    </button>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    padding: 80px 32px;
+    text-align: center;
+  }
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .mdl-typography--display-1 {
+    margin-bottom: 24px;
+  }
+  .mdl-typography--body-1 {
+    margin-bottom: 32px;
+    font-size: 1.2em;
+  }
+</style>
+
