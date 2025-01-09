@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "setup-mdl": "node scripts/setup-mdl.js",
-    "prepare": "npm run setup-mdl"
+    "prepare": "npm run setup-mdl && npm run convert-images"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.3",
